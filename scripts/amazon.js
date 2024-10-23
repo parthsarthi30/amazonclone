@@ -17,14 +17,23 @@ const products = [{
     priceCents: 2095
 },
 {
-    image: '',
-    name: '',
+    image: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
+    name: 'Adults Plain Cotton T-Shirt - 2 Pack',
     rating: {
         stars: 4.5,
         count: 56
     },
     priceCents: 799
+},
+{
+  iamge: '',
+  name: '',
+  rating: {
+    stars: 3.5 ,
+    count: 46
+  }
 }];
+
 
 let productsHTML = ''; //sabke liye ek html generate hoga iske pehle console me har product ke liye pura alag html generate hora tha
 //line 32 ki wajah se teeno ek saath combine hojaayenge
@@ -85,4 +94,5 @@ console.log(productsHTML);
  //using dom to take the above html and put it on the page instead of console
 
 document.querySelector('.js-products-grid').
-  innerHTML = productsHTML;
+  innerHTML = productsHTML;//isse new product add hoga toh usme sab kuch already rahega grid ke ander 
+  //and now we dont need the html code which already present in the js file except for the classes
