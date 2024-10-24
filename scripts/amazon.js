@@ -46,16 +46,42 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" 
+           data-product-id = "${product.id}">
             Add to Cart
           </button>
         </div>
     `;
 });
 
-console.log(productsHTML);
  //using dom to take the above html and put it on the page instead of console
 
 document.querySelector('.js-products-grid').
   innerHTML = productsHTML;//isse new product add hoga toh usme sab kuch already rahega grid ke ander 
   //and now we dont need the html code which already present in the js file except for the classes
+document.querySelectorAll('.js-add-to-cart')
+  .forEach( (button)=> {
+    button.addEventListener('click', ()=>{
+      const productId = button.dataset.productId;
+
+      let matchingItem;
+
+      cart.forEach((item)=> {
+        if(productId === item.productId){
+          matchingItem = item;
+        }
+      });
+
+      if (matchingItem){
+        matchingItem.quantity += 1;
+      }
+      else{
+        cart.push({
+          productId: productId,
+          quantity: 1
+        });
+      };
+
+       console.log(cart);
+    });
+  });
