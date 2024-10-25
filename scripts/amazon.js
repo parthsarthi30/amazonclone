@@ -1,3 +1,5 @@
+import{cart} from "../data/cart.js";
+
 let productsHTML = ''; //sabke liye ek html generate hoga iske pehle console me har product ke liye pura alag html generate hora tha
 //line 32 ki wajah se teeno ek saath combine hojaayenge
 products.forEach((product) => {
