@@ -1,8 +1,19 @@
-import{cart} from "../data/cart.js";
-import { products} from "../data/products.js";
+import{cart, addtoCart} from "../data/cart.js";
+import {products} from "../data/products.js";
 
 let productsHTML = ''; //sabke liye ek html generate hoga iske pehle console me har product ke liye pura alag html generate hora tha
 //line 32 ki wajah se teeno ek saath combine hojaayenge
+
+function updateCartQ(){
+  let cartQuantity = 0;
+      cart.forEach((Cartitem)=> {
+        cartQuantity = Cartitem.quantity;
+      });
+
+      document.querySelector('.js-cart-quantity')
+      .innerHTML = cartQuantity;
+}
+
 products.forEach((product) => {
     productsHTML += ` 
         <div class="product-container">
@@ -67,31 +78,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', ()=>{
       const productId = button.dataset.productId;
 
-      let matchingItem;
-
-      cart.forEach((item)=> {
-        if(productId === item.productId){
-          matchingItem = item;
-        }
-      });
-
-      if (matchingItem){
-        matchingItem.quantity += 1;
-      }
-      else{
-        cart.push({
-          productId: productId,
-          quantity: 1
-        });
-      };
-
-      let cartQuantity = 0;
-      cart.forEach((item)=> {
-        cartQuantity = item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity')
-      .innerHTML = cartQuantity;
-
+      addtoCart(productId);
+      updateCartQ();
     });
   });
